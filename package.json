@@ -1,0 +1,9 @@
+{
+  "name": "yigit-erkoc-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official website for Yigit Erkoc — alternative rock / indie / shoegaze artist.",
+  "scripts": {
+    "dev": "npx serve ."
+  }
+}
