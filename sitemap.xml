@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://yigiterkoc.com/</loc>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-portrait.jpg</image:loc>
+      <image:title>Yigit Erkoc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-running-in-madness-cover.jpg</image:loc>
+      <image:title>Running in Madness by Yigit Erkoc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-kagittan-sehirler-cover.jpg</image:loc>
+      <image:title>Kağıttan Şehirler by Yigit Erkoc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-2014-ep-cover.jpg</image:loc>
+      <image:title>Let's Go Back to 2014 by Yigit Erkoc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-salagin-teki-cover.jpg</image:loc>
+      <image:title>Salağın Teki by Yigit Erkoc</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yigiterkoc.com/yigit-erkoc-bir-yol-bul-cover.jpg</image:loc>
+      <image:title>Bir Yol Bul by Yigit Erkoc</image:title>
+    </image:image>
   </url>
 </urlset>
