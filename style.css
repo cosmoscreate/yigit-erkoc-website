@@ -15,18 +15,22 @@ input, textarea { font: inherit; }
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* color */
-  --bg: #0b0a09;
-  --bg-elevated: #151312;
-  --bg-elevated-2: #1c1917;
-  --line: #2a2622;
-  --line-strong: #3a352f;
-  --fg: #ece7e0;
-  --fg-dim: #b7afa3;
-  --fg-faint: #726b62;
-  --accent: #e2694f;       /* text-safe on --bg, ~6:1 contrast */
-  --accent-deep: #7a2418;  /* surface / background use */
-  --accent-deep-hover: #8f2c1e;
+  /* color — sampled directly from the "Running in Madness" cover art */
+  --bg: #121313;           /* silhouette mass */
+  --bg-elevated: #1b1b18;
+  --bg-elevated-2: #221f1a;
+  --line: #2a2723;
+  --line-strong: #3d372c;
+  --fg: #e9e3d6;           /* lightened haze sky, for text */
+  --fg-dim: #a89f8f;       /* haze sky */
+  --fg-faint: #6b6255;     /* top-edge film artifact tone */
+  --accent: #e7cd92;       /* distant window lights — the one saturated color in the cover; ~12:1 contrast on --bg */
+  --accent-deep: #4a3f2e;  /* surface / background use */
+  --accent-deep-hover: #5c4f3a;
+
+  /* tiny secondary accents — used only in a handful of small details, never dominant */
+  --accent-teal: #0d5b57;
+  --accent-burnt: #b86b14;
 
   /* type */
   --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
@@ -113,6 +117,9 @@ section { position: relative; }
   background: var(--accent);
   display: inline-block;
 }
+/* one small, deliberate exception — the last section's label only */
+#contact .kicker { color: var(--accent-teal); }
+#contact .kicker::before { background: var(--accent-teal); }
 
 .section-head { margin-bottom: var(--space-5); max-width: 46ch; }
 .section-head h2 { margin-top: var(--space-2); }
@@ -206,7 +213,7 @@ section { position: relative; }
   align-items: center;
   justify-content: space-between;
   padding: var(--space-2) var(--space-3);
-  background: linear-gradient(to bottom, rgba(11,10,9,0.85), rgba(11,10,9,0));
+  background: linear-gradient(to bottom, rgba(18,19,19,0.85), rgba(18,19,19,0));
   backdrop-filter: blur(2px);
 }
 @media (min-width: 700px) { .site-header { padding: var(--space-3) var(--space-5); } }
@@ -276,6 +283,8 @@ section { position: relative; }
 }
 .nav-mobile a:hover, .nav-mobile a:focus-visible { color: var(--accent); }
 .nav-mobile .link-list { margin-top: var(--space-5); }
+.nav-mobile .link-list a { background-image: linear-gradient(var(--accent-burnt), var(--accent-burnt)); }
+.nav-mobile .link-list a:hover, .nav-mobile .link-list a:focus-visible { color: var(--accent-burnt); }
 
 body.nav-open { overflow: hidden; }
 
@@ -293,7 +302,7 @@ body.nav-open { overflow: hidden; }
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: #0b0a09;
+  background: #121313;
 }
 .hero-bg-img {
   position: absolute;
@@ -302,15 +311,15 @@ body.nav-open { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
-  filter: grayscale(25%) contrast(1.1) brightness(0.7);
+  filter: grayscale(15%) sepia(20%) saturate(1.1) contrast(1.05) brightness(0.62);
 }
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(60% 55% at 22% 18%, rgba(122, 36, 24, 0.55), transparent 60%),
-    radial-gradient(50% 45% at 85% 75%, rgba(60, 50, 70, 0.35), transparent 65%),
-    linear-gradient(180deg, rgba(11,10,9,0.25) 0%, rgba(11,10,9,0.45) 45%, rgba(11,10,9,0.96) 100%);
+    radial-gradient(60% 55% at 22% 18%, rgba(231, 205, 146, 0.28), transparent 60%),
+    radial-gradient(50% 45% at 85% 75%, rgba(74, 63, 46, 0.45), transparent 65%),
+    linear-gradient(180deg, rgba(18,19,19,0.25) 0%, rgba(18,19,19,0.45) 45%, rgba(18,19,19,0.96) 100%);
 }
 
 .hero-inner { padding-bottom: var(--space-7); }
@@ -389,7 +398,7 @@ body.nav-open { overflow: hidden; }
 .frame {
   position: relative;
   aspect-ratio: 4 / 5;
-  background: linear-gradient(145deg, #1c1917 0%, #100e0d 100%);
+  background: linear-gradient(145deg, #1b1b18 0%, #141412 100%);
   border: 1px solid var(--line);
   overflow: hidden;
 }
@@ -443,6 +452,7 @@ body.nav-open { overflow: hidden; }
 @media (min-width: 800px) {
   .release-card { grid-template-columns: minmax(240px, 380px) 1fr; gap: var(--space-6); }
 }
+.release-card .frame { border-color: rgba(13, 91, 87, 0.5); }
 
 .release-info .kicker { margin-bottom: var(--space-2); }
 .release-title { font-size: var(--fs-h3); margin-top: var(--space-1); }
@@ -455,14 +465,17 @@ body.nav-open { overflow: hidden; }
   color: var(--fg-faint);
   letter-spacing: 0.04em;
 }
+.release-meta span:nth-child(2) { color: var(--accent-burnt); }
 .release-desc { margin-top: var(--space-3); max-width: 48ch; }
 .release-links { margin-top: var(--space-4); }
 .release-links .link-list a { color: var(--fg-dim); }
+.release-links .link-list a:nth-child(5) { background-image: linear-gradient(var(--accent-burnt), var(--accent-burnt)); }
+.release-links .link-list a:nth-child(5):hover, .release-links .link-list a:nth-child(5):focus-visible { color: var(--accent-burnt); }
 
 /* External links (opens in new tab) get a small directional arrow */
 .link-list a[target="_blank"]::after { content: " \2197"; font-size: 0.8em; }
 
-.previous-releases { margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.previous-releases { margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid rgba(13, 91, 87, 0.4); }
 .previous-releases-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -477,7 +490,7 @@ body.nav-open { overflow: hidden; }
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border: 1px solid var(--line);
-  filter: grayscale(35%);
+  filter: grayscale(40%) sepia(12%) saturate(1.05) brightness(0.9);
   transition: filter 0.3s var(--ease);
 }
 .prev-release:hover, .prev-release:focus-visible { filter: grayscale(0%); }
@@ -490,7 +503,7 @@ body.nav-open { overflow: hidden; }
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--fg);
-  background: linear-gradient(180deg, transparent, rgba(11,10,9,0.9));
+  background: linear-gradient(180deg, transparent, rgba(18,19,19,0.9));
 }
 
 /* ---------- About ---------- */
@@ -501,6 +514,7 @@ body.nav-open { overflow: hidden; }
 @media (min-width: 800px) {
   .about-grid { grid-template-columns: minmax(220px, 340px) 1fr; gap: var(--space-6); align-items: start; }
 }
+.about-grid .frame { border-color: rgba(184, 107, 20, 0.4); }
 .about-copy p + p { margin-top: var(--space-3); }
 .about-copy .placeholder-note {
   margin-top: var(--space-4);
@@ -514,6 +528,7 @@ body.nav-open { overflow: hidden; }
 /* ---------- Press ---------- */
 .press-content { max-width: 60ch; }
 .press-kit-actions { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-4); align-items: flex-start; }
+.press-kit-actions .btn-primary { box-shadow: 0 3px 0 0 rgba(13, 91, 87, 0.5); }
 .press-links-block { margin-top: var(--space-5); }
 .press-links-block h3 { font-size: 1rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-faint); margin-bottom: var(--space-2); font-weight: 400; }
 
@@ -526,7 +541,7 @@ body.nav-open { overflow: hidden; }
   font-weight: 700;
   word-break: break-word;
   color: var(--fg);
-  border-bottom: 2px solid var(--accent-deep);
+  border-bottom: 2px solid var(--accent-teal);
   padding-bottom: 0.15em;
   transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
@@ -554,7 +569,7 @@ body.nav-open { overflow: hidden; }
 }
 .copy-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 .copy-btn:hover, .copy-btn:focus-visible { color: var(--fg); border-color: var(--fg-dim); }
-.copy-btn.is-copied { color: var(--accent); border-color: var(--accent-deep); }
+.copy-btn.is-copied { color: var(--fg); border-color: var(--accent-teal); background: rgba(13, 91, 87, 0.15); }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -571,11 +586,11 @@ body.nav-open { overflow: hidden; }
   .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
 }
 .footer-links .link-list a { color: var(--fg-faint); font-size: var(--fs-label); }
-.footer-links .link-list a:hover, .footer-links .link-list a:focus-visible { color: var(--fg); }
+.footer-links .link-list a:hover, .footer-links .link-list a:focus-visible { color: var(--accent-burnt); }
 .footer-bottom {
   margin-top: var(--space-5);
   padding-top: var(--space-3);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(13, 91, 87, 0.3);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
